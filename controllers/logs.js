@@ -1,9 +1,8 @@
 const Log = require("../modals/log");
+const Tech = require("../modals/tech");
 const db = require("../db/connection");
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
-
-// @TODO: Make Global Varibles For 500, 200 & 404 errors
 
 // @route Get api/logs
 // @desc  Get all logs
@@ -45,6 +44,11 @@ const createLog = async (req, res) => {
       tech,
     });
     const log = await newLog.save();
+    await Tech.findOneAndUpdate(
+      { _id: id },
+      { $push: { logs: log._id } },
+      { upsert: true }
+    );
     res.json(log);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -67,6 +71,7 @@ const updateLog = async (req, res) => {
 const deleteLog = async (req, res) => {
   try {
     const { id } = req.params;
+    await Tech.update({}, { $pull: { logs: id } }, { multi: true });
     const deleted = await Log.findByIdAndDelete(id);
     if (deleted) return res.status(200).json("Log Deleted!");
     throw new Error("Log not found");

@@ -32,19 +32,6 @@ const getTech = async (req, res) => {
   }
 };
 
-// @route Get api/techs/:id/logs
-// @desc  Get all logs made by tech
-const getTechLogs = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const tech = await Tech.findById(id);
-    const logs = await Log.find({ tech: tech.id });
-    res.json(logs);
-  } catch (error) {
-    res.status(500).send({ error: error.message });
-  }
-};
-
 // @route Post api/techs
 // @desc  Add new tech
 const createTech = async (req, res) => {
@@ -91,7 +78,6 @@ module.exports = {
   createTech,
   getTech,
   getTechs,
-  getTechLogs,
   updateTech,
   deleteTech,
 };
