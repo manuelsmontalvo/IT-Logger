@@ -8,7 +8,7 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 // @desc  Get all logs
 const getLogs = async (req, res) => {
   try {
-    const logs = await Log.find().populate("tech");
+    const logs = await Log.find();
     res.json(logs);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -71,7 +71,7 @@ const updateLog = async (req, res) => {
 const deleteLog = async (req, res) => {
   try {
     const { id } = req.params;
-    await Tech.update({}, { $pull: { logs: id } }, { multi: true });
+    await Tech.updateMany({}, { $pull: { logs: id } }, { multi: true });
     const deleted = await Log.findByIdAndDelete(id);
     if (deleted) return res.status(200).json("Log Deleted!");
     throw new Error("Log not found");

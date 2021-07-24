@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Preloader from "../layout/Preloader";
 import LogItem from "./LogItem";
+import { getLogs } from "../services/Logs";
 
 const Logs = () => {
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getLogs();
+    setLoading(true);
+    logArray();
     // eslint-disable-next-line
   }, []);
 
-  const getLogs = async () => {
-    setLoading(true);
-    const res = await fetch("/logs");
-    const data = await res.json();
-
-    setLogs(data);
+  const logArray = async () => {
+    const res = await getLogs();
+    setLogs((prevState) => [...prevState, ...res.data]);
     setLoading(false);
   };
 
@@ -32,7 +31,7 @@ const Logs = () => {
       {!loading && logs.length === 0 ? (
         <p className='center'> No logs to show...</p>
       ) : (
-        logs.map((log) => <LogItem key={log.id} log={log} />)
+        logs.map((log) => <LogItem key={log._id} log={log} />)
       )}
     </ul>
   );
