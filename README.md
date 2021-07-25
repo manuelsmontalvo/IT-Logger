@@ -1,11 +1,17 @@
 # IT-Logger
-Issue ticket tracker
+
+Issue ticket logger that utilizes React & Node
 
 # What was used
 
-- React
-- Redux
-- Materialize CSS
-- Moment
-- concurrently
-- json-server
+-   React
+-   Redux
+-   Axios
+-   Materialize CSS
+-   Node
+-   Express
+-   Mongoose
+
+# What to work on next
+
+- intergrate jest for testing
