@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -9,5 +9,10 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
-  }
+  },
+  "name": "it-logger",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/manuelsmontalvo/IT-Logger.git",
+  "license": "MIT"
 }
