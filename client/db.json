@@ -1,32 +1,32 @@
 {
   "logs": [
     {
-      "id": 1,
-      "message": "Changed network card in server 008",
-      "attention": false,
-      "tech": "Sam Smith",
-      "date": "2021-07-25T03:22:56.821Z"
-    },
-    {
-      "id": 2,
-      "message": "Fixed hard drive on workstation 002",
-      "attention": false,
-      "tech": "John Doe",
-      "date": "2019-05-31T16:18:04.245Z"
-    },
-    {
-      "message": "1122 wireless down",
+      "id": 3,
+      "message": "Monitor 008 broken ",
       "attention": true,
-      "tech": "Sara Wilson",
-      "date": "2019-05-31T15:46:48.690Z",
-      "id": 3
+      "tech": "John Doe",
+      "date": "2021-07-25T07:22:16.615Z"
     },
     {
-      "id": 4,
-      "message": "Workstation 026 is up and running",
+      "message": "Unit 5 needs attention",
+      "attention": true,
+      "tech": "Manuel Montalvo",
+      "date": "2021-07-25T07:21:50.742Z",
+      "id": 4
+    },
+    {
+      "message": "Account Lockout",
+      "attention": true,
+      "tech": "Sam Smith",
+      "date": "2021-07-25T07:22:37.873Z",
+      "id": 5
+    },
+    {
+      "message": "Need guidance ",
       "attention": false,
-      "tech": "Sara Wilson",
-      "date": "2019-05-31T19:57:35.544Z"
+      "tech": "Felicita Flores",
+      "date": "2021-07-25T07:23:07.773Z",
+      "id": 6
     }
   ],
   "techs": [
@@ -41,9 +41,14 @@
       "lastName": "Smith"
     },
     {
-      "id": 3,
-      "firstName": "Sara",
-      "lastName": "Wilson"
+      "firstName": "Manuel",
+      "lastName": "Montalvo",
+      "id": 4
+    },
+    {
+      "firstName": "Felicita",
+      "lastName": "Flores",
+      "id": 5
     }
   ]
 }
