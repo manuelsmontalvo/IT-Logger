@@ -1,12 +1,14 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const logRoutes = require('./routes/logs');
 const techRoutes = require('./routes/techs');
 
 const app = express();
 
 // Init Middleware
-app.use(express.json({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded());
 app.use(cors());
 
 app.get('/', (req, res) => res.json({ msg: 'Welcome to the IT Logger API...' }));

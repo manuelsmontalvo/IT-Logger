@@ -1,12 +1,13 @@
 import { GET_TECHS, ADD_TECH, DELETE_TECH, SET_LOADING, TECHS_ERROR } from './types';
+import api from '../config/apiConfig';
 
 // Get techs from server
 export const getTechs = () => async (dispatch) => {
     try {
         setLoading();
 
-        const res = await fetch('/techs');
-        const data = await res.json();
+        const res = await api.get('/techs');
+        const data = await res.data;
 
         dispatch({
             type: GET_TECHS,
@@ -25,14 +26,8 @@ export const addTech = (tech) => async (dispatch) => {
     try {
         setLoading();
 
-        const res = await fetch('/techs', {
-            method: 'POST',
-            body: JSON.stringify(tech),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        const data = await res.json();
+        const res = await api.post('/techs', tech);
+        const data = await res.data;
 
         dispatch({
             type: ADD_TECH,
@@ -50,9 +45,7 @@ export const deleteTech = (id) => async (dispatch) => {
     try {
         setLoading();
 
-        await fetch(`/techs/${id}`, {
-            method: 'DELETE',
-        });
+        await api.delete(`/techs/${id}`);
 
         dispatch({
             type: DELETE_TECH,
@@ -61,7 +54,7 @@ export const deleteTech = (id) => async (dispatch) => {
     } catch (err) {
         dispatch({
             type: TECHS_ERROR,
-            payload: err.response.statusText,
+            payload: err.message,
         });
     }
 };

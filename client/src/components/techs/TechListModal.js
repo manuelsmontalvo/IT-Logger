@@ -8,7 +8,7 @@ const TechListModal = ({ getTechs, tech: { techs, loading } }) => {
     useEffect(() => {
         getTechs();
         // eslint-disable-next-line
-    }, []);
+    }, [techs]);
 
     return (
         <div id='tech-list-modal' className='modal'>
@@ -17,7 +17,7 @@ const TechListModal = ({ getTechs, tech: { techs, loading } }) => {
                 <ul className='collection'>
                     {!loading &&
                         techs !== null &&
-                        techs.map((tech) => <TechItem tech={tech} key={tech.id} />)}
+                        techs.map((tech) => <TechItem tech={tech} key={tech._id} />)}
                 </ul>
             </div>
         </div>
