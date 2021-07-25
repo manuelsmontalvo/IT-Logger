@@ -1,4 +1,4 @@
-import axios from 'axios';
+import apiUrl from '../services/apiConfig';
 
 import { GET_TECHS, ADD_TECH, DELETE_TECH, SET_LOADING, TECHS_ERROR } from './types';
 
@@ -7,7 +7,7 @@ export const getTechs = () => async (dispatch) => {
     try {
         setLoading();
 
-        const res = await axios.get(`/techs`);
+        const res = await fetch(`${apiUrl}/techs`);
         const data = await res.json();
 
         dispatch({
